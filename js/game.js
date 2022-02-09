@@ -8,6 +8,7 @@ import MainScene, { screenHeight, screenWidth } from './MainScene.js';
 const configurations = {
     type: Phaser.AUTO,
     backgroundColor: 0x87ceeb,
+    // images: 'assets/background-day.png',
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,

@@ -33,6 +33,7 @@ export default class MainScene extends Phaser.Scene {
      */
     preload() {
         this.load.image('pipe', 'assets/pipe.png');
+        this.load.image('background', 'assets/background.png');
         this.load.spritesheet('bird', 'assets/bird-sprite.png', {
             frameWidth: 34,
             frameHeight: 24,
@@ -43,6 +44,11 @@ export default class MainScene extends Phaser.Scene {
      *   Create the game objects (images, groups, sprites and animations).
      */
     create() {
+        let background = this.add.image(this.cameras.main.width, this.cameras.main.height, 'background');
+        let scaleX = this.cameras.main.width;
+        let scaleY = this.cameras.main.height;
+        let scale = Math.max(scaleX, scaleY);
+        background.setScale(scale).setScrollFactor(0);
         this.anims.create({
             key: 'birdanim',
             frames: this.anims.generateFrameNumbers('bird', {
