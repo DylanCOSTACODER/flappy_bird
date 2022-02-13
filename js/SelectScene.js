@@ -29,9 +29,6 @@ export default class SelectScene extends Phaser.Scene {
 
         // Y position of names
         let offsetYName = this.game.config.width > this.game.config.height ? 100 : 25;
-        dougName.tint = 0;
-        dougName.x = this.game.config.width / 4 - dougName.width / 2;
-        dougName.y = doug.y + offsetYName;
 
         // Init instructions
         let instructions = this.add.bitmapText(
@@ -52,6 +49,9 @@ export default class SelectScene extends Phaser.Scene {
             ['Doug'],
             this.game.config.width > this.game.config.height ? 32 : 16
         );
+        dougName.tint = 0;
+        dougName.x = this.game.config.width / 4 - dougName.width / 2;
+        dougName.y = doug.y + offsetYName;
 
         // Init noug name
         let nougName = this.add.bitmapText(
