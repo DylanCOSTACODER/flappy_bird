@@ -105,7 +105,7 @@ export default class MainScene extends Phaser.Scene {
                 repeat: -1,
             });
             this.doug = this.physics.add.sprite(80, this.game.config.height / 2, 'doug-sprite');
-            this.doug.setInteractive();
+            this.doug.setImmovable(true);
             this.doug.setScale(scalebird).setScrollFactor(0);
             this.doug.play({ key: 'douganim' });
             this.doug.body.gravity.y = 0;
@@ -139,7 +139,10 @@ export default class MainScene extends Phaser.Scene {
         let passPipe = this.sound.add('passPipe');
         let rightmost = this.getRightmostPipe();
         let pipeHoleHeight = Phaser.Math.Between(gameOptions.pipeHole[0], gameOptions.pipeHole[1]);
-        let pipeHolePosition = Phaser.Math.Between((this.game.config.height * 5) / 6, this.game.config.height / 6);
+        let pipeHolePosition = Phaser.Math.Between(
+            (this.game.config.height * (4 - 1)) / 4,
+            this.game.config.height / 4
+        );
         this.pipePool[0].x =
             rightmost +
             this.pipePool[0].getBounds().width +
@@ -183,11 +186,14 @@ export default class MainScene extends Phaser.Scene {
      * For the Doug mode set doug draggable
      */
     slide() {
-        this.input.setDraggable(this.doug);
-        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-            // gameObject.x = dragX;
-            gameObject.y = dragY;
-        });
+        // Follow pointer move
+        this.input.on(
+            'pointermove',
+            function (pointer) {
+                this.doug.setVelocityY(pointer.y - this.doug.body.y);
+            },
+            this
+        );
     }
 
     /**
