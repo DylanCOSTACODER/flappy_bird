@@ -67,9 +67,10 @@ export default class MainScene extends Phaser.Scene {
         this.anims.create({
             key: 'backgroundanim',
             frames: this.anims.generateFrameNumbers('backgroundSprite', {
-                frame: [0, 1, 2, 3],
+                start: 0,
+                end: 30,
             }),
-            frameRate: 3,
+            frameRate: 4,
             repeat: -1,
         });
         this.backgroundSprite = this.physics.add.sprite(0, 0, 'backgroundSprite').setOrigin(0, 0);
