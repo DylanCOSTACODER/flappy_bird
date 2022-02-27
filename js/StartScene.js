@@ -15,8 +15,8 @@ export default class StartScene extends Phaser.Scene {
             frameHeight: 32,
         });
         this.load.spritesheet('backgroundSprite', 'assets/backgroundforest.png', {
-            frameWidth: 1287,
-            frameHeight: 1287,
+            frameWidth: 1448 / 6,
+            frameHeight: 1448 / 6,
         });
         this.load.bitmapFont('pressstart', 'assets/pressstart.png', 'assets/pressstart.fnt');
     }
